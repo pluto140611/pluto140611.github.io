@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>小心图床吃掉你的内存</title>
+    <link href="/2022/11/02/%E5%B0%8F%E5%BF%83%E5%9B%BE%E5%BA%8A%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E5%86%85%E5%AD%98/"/>
+    <url>/2022/11/02/%E5%B0%8F%E5%BF%83%E5%9B%BE%E5%BA%8A%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E5%86%85%E5%AD%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="关于图床"><a href="#关于图床" class="headerlink" title="关于图床"></a>关于图床</h2><p>图床确实是一个写markdown的很棒的工具，简单来说使用图床后，写markdown插入图片就不是本地图片的位置，而是图片在云端仓库的位置（一个网址的形式），小组合作间传输报告，博客文章中插入图片，图床的使用都会让图片的使用快捷很多，我使用的是Pic-go工具结合阿里云仓库搭建图床，阿里云的仓库大概是十几块40GB一年，还是很香的！以下是我搭建图床的参考教程。</p><p><a href="https://blog.csdn.net/muxuen/article/details/122441469?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166737879216782388027477%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=166737879216782388027477&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_34-2-122441469-null-null.142">https://blog.csdn.net/muxuen/article/details/122441469?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166737879216782388027477%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=166737879216782388027477&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_34-2-122441469-null-null.142</a></p><h2 id="C盘危机"><a href="#C盘危机" class="headerlink" title="C盘危机"></a>C盘危机</h2><p>虽然我的C盘日常冒红，听取同学的建议使用磁盘分区助手从d盘割了20GB给c盘，虽然“今日割五城，明日割十城，然后得一夕安寝”，但是应该够我撑过这学期。但是有一天我还有20GB的c盘突然只剩下400MB？仔细检查了各个文件，终于找出了罪魁祸首！</p><p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092011367.png" alt="image-20221109201103395"></p><p>picgo的一个日志文件竟然有20个GB？查询网络发现原来是由于网络或者各种原因，typora上传图片经常很慢或者失败（卡在uploading界面），但是这个过程中picgo的日志文件不断记录，恰巧最近校网很烂，一张图片我都要传很久，就导致这个picgo的日志直接撑爆了我的c盘。</p><h2 id="解决方案：编辑组"><a href="#解决方案：编辑组" class="headerlink" title="解决方案：编辑组"></a>解决方案：编辑组</h2><p>当然其实更加简单粗暴的方式是删掉日志文件或者直接重装picgo，但是治标不治本，网上有老哥建议使用本地组策略编辑器（我也不知道是个啥）设置一个本地日志的文件上限。链接如下：<a href="https://jingyan.baidu.com/article/4d58d5413ed1bedcd5e9c010.html">https://jingyan.baidu.com/article/4d58d5413ed1bedcd5e9c010.html</a></p><p>但是问题又来了，我的windows10家庭版没有修改这个本地组策略编辑器的权限，查询后得到了以下方法：</p><ul><li><p>在本地新建一个txt，命名为gpedit，输入以下代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">@<span class="hljs-built_in">echo</span> off<br><br><span class="hljs-built_in">pushd</span> <span class="hljs-string">&quot;%~dp0&quot;</span><br><br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt<br><br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt<br><br><span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;findstr /i . List.txt 2^&gt;nul&#x27;</span>) <span class="hljs-keyword">do</span> dism /online /norestart /add-package:<span class="hljs-string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span><br><br>pause<br><br></code></pre></td></tr></table></figure></li><li><p>把这个文件的类型改成bat，然后右键以管理员身份运行，等待cmd自己处理就好</p><p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092021630.png" alt="image-20221109202151470"></p></li><li><p>之后win+r输入gpedit.msc,进入本地组策略编辑器后，定位到计算机配置&#x2F;管理模板&#x2F;windows组件&#x2F;事件日志服务&#x2F;安全，选择“指定日志文件的最大大小(KB)”，修改上限（以kb为单位），应用就好！</p><p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092026520.png" alt="image-20221109202600300"></p></li></ul><p>​<img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092029698.png" alt="image-20221109202913350"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>奇妙的工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ipad远程控制电脑</title>
     <link href="/2022/10/23/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%94%B5%E8%84%91/"/>
     <url>/2022/10/23/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%94%B5%E8%84%91/</url>
