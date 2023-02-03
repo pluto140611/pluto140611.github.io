@@ -16,27 +16,25 @@
   <meta name="author" content="Mr Pony">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一觉醒来c盘少了20个G？">
+    <meta name="description" content="还没使用过java日志">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小心图床吃掉你的内存">
-<meta property="og:url" content="http://example.com/2022/11/02/%E5%B0%8F%E5%BF%83%E5%9B%BE%E5%BA%8A%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E5%86%85%E5%AD%98/index.html">
+<meta property="og:title" content="java笔记1-日志">
+<meta property="og:url" content="http://example.com/2023/02/03/java%E7%AC%94%E8%AE%B01-%E6%97%A5%E5%BF%97/index.html">
 <meta property="og:site_name" content="Pluto14&#39;s Blog">
-<meta property="og:description" content="一觉醒来c盘少了20个G？">
+<meta property="og:description" content="还没使用过java日志">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092011367.png">
-<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092021630.png">
-<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092026520.png">
-<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092029698.png">
-<meta property="article:published_time" content="2022-11-02T09:18:47.000Z">
-<meta property="article:modified_time" content="2022-11-09T12:30:09.781Z">
+<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202302021636364.png">
+<meta property="og:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202302021625615.png">
+<meta property="article:published_time" content="2023-02-03T06:26:05.000Z">
+<meta property="article:modified_time" content="2023-02-03T06:28:52.564Z">
 <meta property="article:author" content="Mr Pony">
-<meta property="article:tag" content="奇妙的工具">
+<meta property="article:tag" content="Study">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092011367.png">
+<meta name="twitter:image" content="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202302021636364.png">
   
   
   
-  <title>小心图床吃掉你的内存 - Pluto14&#39;s Blog</title>
+  <title>java笔记1-日志 - Pluto14&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="小心图床吃掉你的内存"></span>
+            <span id="subtitle" data-typed-text="java笔记1-日志"></span>
           
         </div>
 
@@ -227,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-02 17:18" pubdate>
-          2022年11月2日 下午
+        <time datetime="2023-02-03 14:26" pubdate>
+          2023年2月3日 下午
         </time>
       </span>
     
@@ -239,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.9k 字
         
       </span>
     
@@ -250,7 +248,7 @@
         
         
         
-          14 分钟
+          16 分钟
         
       </span>
     
@@ -288,32 +286,58 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">小心图床吃掉你的内存</h1>
+            <h1 style="display: none">java笔记1-日志</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="关于图床"><a href="#关于图床" class="headerlink" title="关于图床"></a>关于图床</h2><p>图床确实是一个写markdown的很棒的工具，简单来说使用图床后，写markdown插入图片就不是本地图片的位置，而是图片在云端仓库的位置（一个网址的形式），小组合作间传输报告，博客文章中插入图片，图床的使用都会让图片的使用快捷很多，我使用的是Pic-go工具结合阿里云仓库搭建图床，阿里云的仓库大概是十几块40GB一年，还是很香的！以下是我搭建图床的参考教程。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/muxuen/article/details/122441469?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166737879216782388027477%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=166737879216782388027477&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_34-2-122441469-null-null.142">https://blog.csdn.net/muxuen/article/details/122441469?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166737879216782388027477%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=166737879216782388027477&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~pc_rank_34-2-122441469-null-null.142</a></p>
-<h2 id="C盘危机"><a href="#C盘危机" class="headerlink" title="C盘危机"></a>C盘危机</h2><p>虽然我的C盘日常冒红，听取同学的建议使用磁盘分区助手从d盘割了20GB给c盘，虽然“今日割五城，明日割十城，然后得一夕安寝”，但是应该够我撑过这学期。但是有一天我还有20GB的c盘突然只剩下400MB？仔细检查了各个文件，终于找出了罪魁祸首！</p>
-<p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092011367.png" srcset="/img/loading.gif" lazyload alt="image-20221109201103395"></p>
-<p>picgo的一个日志文件竟然有20个GB？查询网络发现原来是由于网络或者各种原因，typora上传图片经常很慢或者失败（卡在uploading界面），但是这个过程中picgo的日志文件不断记录，恰巧最近校网很烂，一张图片我都要传很久，就导致这个picgo的日志直接撑爆了我的c盘。</p>
-<h2 id="解决方案：编辑组"><a href="#解决方案：编辑组" class="headerlink" title="解决方案：编辑组"></a>解决方案：编辑组</h2><p>当然其实更加简单粗暴的方式是删掉日志文件或者直接重装picgo，但是治标不治本，网上有老哥建议使用本地组策略编辑器（我也不知道是个啥）设置一个本地日志的文件上限。链接如下：<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/4d58d5413ed1bedcd5e9c010.html">https://jingyan.baidu.com/article/4d58d5413ed1bedcd5e9c010.html</a></p>
-<p>但是问题又来了，我的windows10家庭版没有修改这个本地组策略编辑器的权限，查询后得到了以下方法：</p>
+                <h1 id="Java笔记1-日志"><a href="#Java笔记1-日志" class="headerlink" title="Java笔记1-日志"></a>Java笔记1-日志</h1><h2 id="1-日志"><a href="#1-日志" class="headerlink" title="1.日志"></a>1.日志</h2><h3 id="1-日志基本"><a href="#1-日志基本" class="headerlink" title="1.日志基本"></a>1.日志基本</h3><p>日志文件用于记录操作系统事件的文件集合，可以处理历史数据，诊断问题以及理解系统活动具有重要作用。</p>
+<p>java的日志框架拥有以下作用:</p>
 <ul>
-<li><p>在本地新建一个txt，命名为gpedit，输入以下代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">@<span class="hljs-built_in">echo</span> off<br><br><span class="hljs-built_in">pushd</span> <span class="hljs-string">&quot;%~dp0&quot;</span><br><br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum &gt;List.txt<br><br><span class="hljs-built_in">dir</span> /b C:\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum &gt;&gt;List.txt<br><br><span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;findstr /i . List.txt 2^&gt;nul&#x27;</span>) <span class="hljs-keyword">do</span> dism /online /norestart /add-package:<span class="hljs-string">&quot;C:\Windows\servicing\Packages\%%i&quot;</span><br><br>pause<br><br></code></pre></td></tr></table></figure>
-
-
+<li><p>控制日志输出的内容和格式。</p>
 </li>
-<li><p>把这个文件的类型改成bat，然后右键以管理员身份运行，等待cmd自己处理就好</p>
-<p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092021630.png" srcset="/img/loading.gif" lazyload alt="image-20221109202151470"></p>
+<li><p>控制日志输出的位置。</p>
 </li>
-<li><p>之后win+r输入gpedit.msc,进入本地组策略编辑器后，定位到计算机配置&#x2F;管理模板&#x2F;windows组件&#x2F;事件日志服务&#x2F;安全，选择“指定日志文件的最大大小(KB)”，修改上限（以kb为单位），应用就好！</p>
-<p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092026520.png" srcset="/img/loading.gif" lazyload alt="image-20221109202600300"></p>
+<li><p>日志文件相关的优化，如异步操作、归档、压缩</p>
+</li>
+<li><p>日志系统的维护</p>
+</li>
+<li><p>面向接口开发-日志的门面</p>
 </li>
 </ul>
-<p>​		<img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202211092029698.png" srcset="/img/loading.gif" lazyload alt="image-20221109202913350"></p>
+<h3 id="2-JUL"><a href="#2-JUL" class="headerlink" title="2.JUL"></a>2.JUL</h3><p>JDK是自带日志系统的，但是功能性比较差。包含以下组件：</p>
+<ul>
+<li>Logger:被称为记录器，应用程序通过获取Logger对象，抵用其API来发布日志信息。Logger通常被认为是访问日志系统的入口程序。</li>
+<li>Handler:处理器，每个Logger都会关联一个或者是一组 Handler，Logger 会将日志交给关联的Handler去做处理，由Handler 负责将日志做记录。Handler具体实现了日志的输出位置，比如可以输出到控制台或者是文件中等等。</li>
+<li>Filter:过滤器，根据需要定制哪些信息会被记录，哪些信息会被略过。<br>Formatter:格式化组件，它负责对日志中的数据和信息进行转换和格式化，所以它决定了我们输出日志最终的形式。</li>
+<li>Level:日志的输出级别，每条日志消息都有一个关联的级别。我们根据输出级别的设置，用来展现最终所呈现的日志信息。根据不同的需求，去设置不同的级别。</li>
+</ul>
+<p>JDK将日志分为七个等级，如下表从左到右依次降低，将级别设置为x，x左边的会输出，x右边的不会输出。</p>
+<p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202302021636364.png" srcset="/img/loading.gif" lazyload alt="image-20230202163655310"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.logging.Level;<br><span class="hljs-keyword">import</span> java.util.logging.Logger;<br> <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogJDKTest</span> &#123;<br>       <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Logger</span> <span class="hljs-variable">log</span> <span class="hljs-operator">=</span> Logger.getLogger(LogJDKTest.class.toString());<br> <br>       <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>              <span class="hljs-comment">// all→finest→finer→fine→config→info→warning→server→off</span><br>              <span class="hljs-comment">// 级别依次升高，后面的日志级别会屏蔽之前的级别</span><br>              log.setLevel(Level.INFO);<br>              log.finest(<span class="hljs-string">&quot;finest&quot;</span>);<br>              log.finer(<span class="hljs-string">&quot;finer&quot;</span>);<br>              log.fine(<span class="hljs-string">&quot;fine&quot;</span>);<br>              log.config(<span class="hljs-string">&quot;config&quot;</span>);<br>              log.info(<span class="hljs-string">&quot;info&quot;</span>);<br>              log.warning(<span class="hljs-string">&quot;warning&quot;</span>);<br>              log.severe(<span class="hljs-string">&quot;server&quot;</span>);<br>       &#125;<br>&#125;<br><br><span class="hljs-comment">/*输出</span><br><span class="hljs-comment">六月 23, 2021 11:07:29 上午 com.test.log.LogJDKTest main</span><br><span class="hljs-comment">信息: info</span><br><span class="hljs-comment">六月 23, 2021 11:07:29 上午 com.test.log.LogJDKTest main</span><br><span class="hljs-comment">警告: warning</span><br><span class="hljs-comment">六月 23, 2021 11:07:29 上午 com.test.log.LogJDKTest main</span><br><span class="hljs-comment">严重: server</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-log4j1"><a href="#3-log4j1" class="headerlink" title="3.log4j1"></a>3.log4j1</h3><p>一个日志框架，日志信息输送的目的地包括控制台，文件，GUI组件服务器等。可以控制日志的生成过程，通过maven的配置文件进行灵活配置。</p>
+<h3 id="4-logback"><a href="#4-logback" class="headerlink" title="4.logback"></a>4.logback</h3><p>一个开源日记组件，分成三个模块：</p>
+<ul>
+<li><p>logback-core，其他两个模块的基础模块。</p>
+</li>
+<li><p>logback-classic，完整实现了slf4j API，用于日志系统切换。</p>
+</li>
+<li><p>logback-access，提供通过http访问日志的功能。</p>
+</li>
+</ul>
+<h2 id="2-门面模式"><a href="#2-门面模式" class="headerlink" title="2.门面模式"></a>2.门面模式</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>**核心:**外部与一个子系统的通信必须通过一个统一的外观对象进行，使得子系统更易于使用。Facade拥有以下特点：</p>
+<ul>
+<li>知道所有子角色的功能和责任</li>
+<li>将客户端发来的请求委派到子系统中，没有实际业务逻辑</li>
+<li>不参与子系统内业务逻辑的实现</li>
+</ul>
+<p><img src="https://ly-pic1.oss-cn-hangzhou.aliyuncs.com/blog/202302021625615.png" srcset="/img/loading.gif" lazyload alt="image-20230202162516502"></p>
+<h2 id="3-slf4j"><a href="#3-slf4j" class="headerlink" title="3.slf4j"></a>3.slf4j</h2><h3 id="1-含义"><a href="#1-含义" class="headerlink" title="1.含义"></a>1.含义</h3><p>由于工程里的不同依赖包可能会使用不同的日志系统，slf4j扮演了一个适配层的角色，由适配层决定使用哪一种日志系统。而后端只需打引日志即可。因此，<strong>slf4j只是一个日志标准，不是日志系统的具体实现</strong>。slf4j-simple、logback都是slf4j的具体实现。</p>
+<h3 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h3><p>关于实现：没有看懂。。。贴一个链接用到了再看</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xrq730/p/8619156.html">https://www.cnblogs.com/xrq730/p/8619156.html</a></p>
 
                 
               </div>
@@ -322,11 +346,32 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/java%E5%AD%A6%E4%B9%A0/" class="category-chain-item">java学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%A5%87%E5%A6%99%E7%9A%84%E5%B7%A5%E5%85%B7/">#奇妙的工具</a>
+        <a href="/tags/Study/">#Study</a>
       
     </div>
   
@@ -338,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>小心图床吃掉你的内存</div>
-      <div>http://example.com/2022/11/02/小心图床吃掉你的内存/</div>
+      <div>java笔记1-日志</div>
+      <div>http://example.com/2023/02/03/java笔记1-日志/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +396,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月2日</div>
+          <div>2023年2月3日</div>
         </div>
       
       
@@ -383,18 +428,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/03/java%E7%AC%94%E8%AE%B01-%E6%97%A5%E5%BF%97/" title="java笔记1-日志">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">java笔记1-日志</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/23/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E7%94%B5%E8%84%91/" title="ipad远程控制电脑">
-                        <span class="hidden-mobile">ipad远程控制电脑</span>
+                      <a href="/2022/11/02/%E5%B0%8F%E5%BF%83%E5%9B%BE%E5%BA%8A%E5%90%83%E6%8E%89%E4%BD%A0%E7%9A%84%E5%86%85%E5%AD%98/" title="小心图床吃掉你的内存">
+                        <span class="hidden-mobile">小心图床吃掉你的内存</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
